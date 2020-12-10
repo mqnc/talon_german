@@ -15,7 +15,7 @@ This is a plug-in for (so far only the patreon-only beta version of) Talon Voice
 It won't work on mac unless you sign the pip installed library file yourself, or unless aegis ships the vosk kaldi library with talon pre-signed.
 
 ## Usage
-Say "german" to switch from command mode to German dictation mode and "English/Englisch" to switch back. Check out the german.talon file for German commands.
+Say "german" to switch from command mode to German dictation mode and "English/Englisch" to switch back. Check out the german.talon and german.py files for German commands.
 
 ## Contribute
 Feel free to report issues or discuss things on Slack: https://talonvoice.com/chat
