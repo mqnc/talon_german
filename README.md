@@ -5,7 +5,7 @@ German Dictation Mode for Talon Voice
 This is the first prototype, don't expect a highly satisfying user experience.
 
 ## Dependencies
-This is a plug-in for (so far only the patreon-only beta version of) Talon Voice (https://talonvoice.com/). It also relies on some functions from knausj's repo: https://github.com/knausj85/knausj_talon.
+This is a plug-in for (so far only the patreon-only beta version of) Talon Voice (https://talonvoice.com/).
 
 ## Setup
 * download the German language model from https://alphacephei.com/vosk/models/vosk-model-de-0.6.zip and extract it into `~/.talon/vosk/`
@@ -15,7 +15,7 @@ This is a plug-in for (so far only the patreon-only beta version of) Talon Voice
 It won't work on mac unless you sign the pip installed library file yourself, or unless aegis ships the vosk kaldi library with talon pre-signed.
 
 ## Usage
-Say "german" to switch from command mode to German dictation mode and "English/Englisch" to switch back. Check out the german.talon and german.py files for German commands.
+Say "german" to switch from command mode to German dictation mode and "english/englisch" to switch back. Check out the german.talon and german.py files for German commands.
 
 ## Contribute
-Feel free to report issues or discuss things on Slack: https://talonvoice.com/chat
+Feel free to report issues or discuss things on Slack: https://talonvoice.com/chat #language-deutsch
