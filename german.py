@@ -92,9 +92,9 @@ _no_space_before = ".,!?:;)]}␣"
 
 mod.list("modifier", desc="Modifiers for upper casement")
 ctx.lists["self.modifier"] = {
-	"hoch": "CAP", # groß often becomes große/großer/großes
-	"huch": "CAP",
-	"alles hoch": "ALLCAPS",
+	"schiff": "CAP", # groß often becomes große/großer/großes
+	"schifft": "CAP",
+	"holzschiff": "ALLCAPS", # hold shift
 }
 
 @mod.capture(rule='({self.buchstabe}+) | <word>')
