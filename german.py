@@ -1,6 +1,6 @@
 
 import talon
-from talon import Context, Module, actions, ui, app, speech_system
+from talon import Context, Module, actions, ui, app, speech_system, scope, settings
 import unicodedata
 
 mod = Module()
@@ -13,6 +13,9 @@ ctx.settings = {
 #	'speech.language': 'de_DE',
 	'speech.timeout': 0.3
 }
+
+mod.setting("german_unicode", type=int, default=1,
+	desc="Enable proper unicode punctuation")
 
 mod.list("buchstabe", desc="The spoken phonetic alphabet")
 ctx.lists["self.buchstabe"] = {
@@ -62,13 +65,16 @@ ctx.lists["self.sonderzeichen"] = {
 	"doppelpunkt": ":",
 	"semikolon": ";",
 	"bindestrich": "-",
+	"gedankenstrich": "–",
 	"unterstrich": "_",
 	"schrägstrich": "/",
 	"backslash": "\\",
 	"senkrecht strich": "|",
-	"zitat": '"',
-	"zitat ende": '" ',
-	"apostroph": "'",
+	"zitat": '„',
+	"zitat ende": '“',
+	"halbes zitat": '‚',
+	"halbes zitat ende": '‘',
+	"apostroph": "’",
 	"klammer auf": "(",
 	"klammer zu": ")",
 	"eckige klammer auf": "[",
@@ -87,12 +93,21 @@ ctx.lists["self.sonderzeichen"] = {
 	"zirkumflex": "^",
 }
 
-_space_after = ".,!?:;)]}"
-_no_space_before = ".,!?:;)]}␣"
+_space_after = ".,!?:;)]}–“‘"
+_no_space_before = ".,-!?:;)]}␣“‘’"
+_ascii_replace = {
+	'–':'-',
+	'„':'"',
+	'“':'"',
+	"‚":"'",
+	"‘":"'",
+	"’":"'"
+}
 
 mod.list("modifier", desc="Modifiers for upper casement")
 ctx.lists["self.modifier"] = {
 	"schiff": "CAP", # groß often becomes große/großer/großes
+	"schiffs": "CAP",
 	"schifft": "CAP",
 	"holzschiff": "ALLCAPS", # hold shift
 }
@@ -143,6 +158,15 @@ def weg(m) -> str:
 
 @mod.action_class
 class Actions:
+
+	def enable_german_unicode():
+		"""enable proper unicode punctuation"""
+		ctx.settings["user.german_unicode"] = 1
+
+	def disable_german_unicode():
+		"""disable proper unicode punctuation"""
+		ctx.settings["user.german_unicode"] = 0
+
 	def smart_insert(txt:str):
 		"""context-aware insertion"""
 
@@ -170,7 +194,13 @@ class Actions:
 				and not squeeze_into_word:
 			actions.insert(' ')
 
-		actions.insert(txt)
+		if settings.get("user.german_unicode") == 0:
+			ascii = txt
+			for c in _ascii_replace:
+				ascii = ascii.replace(c, _ascii_replace[c])
+			actions.insert(ascii)
+		else:
+			actions.insert(txt)
 
 		if after != "" \
 				and (txt[-1] in _space_after or unicodedata.category(txt[-1])[0] == 'L')\
