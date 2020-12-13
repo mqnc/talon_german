@@ -51,6 +51,22 @@ ctx.lists["self.buchstabe"] = {
 	"s z": "ß",
 }
 
+mod.list("ziffer", desc="Numbers")
+ctx.lists["self.ziffer"] = {
+	"null": "0",
+	"eins": "1",
+	"zwei": "2",
+	"drei": "3",
+	"vier": "4",
+	"fünf": "5",
+	"sechs": "6",
+	"sieben": "7",
+	"acht": "8",
+	"neun": "9",
+	"komma": ",",
+	"punkt": ".",
+}
+
 mod.list("sonderzeichen", desc="Special symbols")
 ctx.lists["self.sonderzeichen"] = {
 	"leerzeichen": "␣", # will become spaces after all substitutions
@@ -112,9 +128,9 @@ ctx.lists["self.modifier"] = {
 	"holzschiff": "ALLCAPS", # hold shift
 }
 
-@mod.capture(rule='({self.buchstabe}+) | <word>')
+@mod.capture(rule='({self.buchstabe}+) | ({self.ziffer}+) | <word>')
 def wort(m) -> str:
-	"""word or spelled word, inserts space in the end"""
+	"""word or spelled word or number, inserts space in the end"""
 	return ''.join(str(m).split()) + ' '
 
 @mod.capture(rule='[{self.modifier}] <self.wort>')
