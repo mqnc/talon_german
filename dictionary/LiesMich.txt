@@ -1,0 +1,13 @@
+Servus und danke für Ihr Interesse an diesem Projekt.
+
+Falsch geschriebene, seltsame und fehlende Wörter bitte per Mail an Jan Schreiber unter
+	jan.schreiber (at) languagetool.org
+Vielen Dank im Voraus!
+
+BenutzerInnen aus der Schweiz mit Grundkenntnissen in Python interessieren sich vielleicht auch für das Python-Skript
+	https://sourceforge.net/p/germandict/code/HEAD/tree/tools/separateDEandCH.py
+Es wandelt 'ß' zu 'ss' um, ersetzt 'Müsli' durch 'Müesli' und erzeugt aus 'Handy...' die Alternativen 'Natel...'.
+
+Wer eine tolerantere Rechtschreibprüfung (oder eine größere Wortliste) möchte, sollte sich 
+	https://sourceforge.net/p/germandict/code/HEAD/tree/variants.dic
+herunterladen. ACHTUNG: Diese Liste enthält auch vereinzelt gängige, nach Duden aber inkorrekte Formen wie 'nochmal', 'schonmal', 'erstmal'.

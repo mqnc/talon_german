@@ -5,6 +5,8 @@ mode: user.german
 	mode.disable("user.german")
 	mode.enable("command")
 
+^german: skip()
+
 ^unicode$:
 	user.enable_german_unicode()
 
