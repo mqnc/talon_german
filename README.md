@@ -8,7 +8,7 @@ This is the first prototype, don't expect a highly satisfying user experience.
 This is a plug-in for (so far only the patreon-only beta version of) Talon Voice (https://talonvoice.com/).
 
 ## Setup
-* download the German language model from https://alphacephei.com/vosk/models/vosk-model-de-0.6.zip and extract it into `~/.talon/vosk/`
+* download the German language model from https://alphacephei.com/vosk/models/vosk-model-de-0.6.zip and extract it into `~/.talon/vosk/` (according to [#1](/../../issues/1), on Windows the path is `%APPDATA%\talon\vosk\`, and the actual model path is `C:\Users\<USER>\AppData\Roaming\talon\vosk\vosk-model-de-0.6`)
 * run `~/.talon/bin/pip install vosk` (on windows `scripts\pip install vosk`)
 * clone this repository into your talon user folder
 
